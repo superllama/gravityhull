@@ -1,0 +1,9 @@
+AddonInfo {
+  name "Gravity Hull Designator"
+  version "beta"
+  up_date "05/06/2011"
+  author_name "SuperLlama"
+  author_email "superllama527@hotmail.com"
+  info "The ultimate anti-spazz tool, it creates a separate world to give the illusion of localized physics."
+  override "1"
+}
