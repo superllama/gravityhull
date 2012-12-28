@@ -8,14 +8,10 @@ table.Merge(TOOL,{
 	}
 })
 if CLIENT then
-	for k,v in pairs{
-		Tool_localphysics_name = "Gravity Hull Designator",
-		Tool_localphysics_desc = "Create a local physics system for a ship or building so that you can walk around inside regardless of its movement or angles.",
-		Tool_localphysics_0 = "Fire at an upright hull to create a local physics system. Alt-fire at a designated hull to remove the system.",
-		Hint_ghd = "Check your chatbox for instructions.",
-	} do 
-		language.Add(k,v)
-	end
+	language.Add("Tool.localphysics.name", "Gravity Hull Designator")
+	language.Add("Tool.localphysics.desc", "Create a local physics system for a ship or building so that you can walk around inside regardless of its movement or angles.")
+	language.Add("Tool.localphysics.0", "Fire at an upright hull to create a local physics system. Alt-fire at a designated hull to remove the system.")
+	language.Add("Hint_ghd", "Check your chatbox for instructions.")
 else
 	concommand.Add("ghd_help",function(p)
 		p:SendHint("ghd",0)
@@ -27,7 +23,7 @@ else
 	end)
 end
 function TOOL.BuildCPanel(cp)
-	cp:AddControl("Header",{Text = "#Tool_localphysics_name", Description = "#Tool_toolname_desc"})
+	cp:AddControl("Header",{Text = "#Tool.localphysics.name", Description = "#Tool.localphysics.desc"})
 	cp:AddControl("Slider",{Label = "Vertical Protrusion Factor", Description = "The minimum distance from the floor that walls or a ceiling is required to keep entities inside.",
 	                        Type = "Integer", Min = 0, Max = 300, Command = "localphysics_floordist"})
 	cp:AddControl("Checkbox",{Label = "Hit Surface Defines Floor", Description = "If checked, the surface shot by the tool will determine the pull of gravity for the system.",
