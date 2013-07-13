@@ -504,7 +504,7 @@ function GH.ShipEat(e,p,nm)
 					end
 					if (p:GetPhysicsObjectCount() > 1) then
 						pp[i] = g:RealLocalToWorld(e:RealWorldToLocal(po:GetPos()))
-						pa[i] = g:RealLocalToWorldAngles(e:RealWorldToLocalAngles(po:GetAngle()))
+						pa[i] = g:RealLocalToWorldAngles(e:RealWorldToLocalAngles(po:GetAngles()))
 					end
 				end
 			end
@@ -515,7 +515,7 @@ function GH.ShipEat(e,p,nm)
 					local po = p:GetPhysicsObjectNum(i-1)
 					if (po:IsValid()) then
 						po:SetPos(pp[i])
-						po:SetAngle(pa[i])
+						po:SetAngles(pa[i])
 					end
 				end
 			end
@@ -588,7 +588,7 @@ function GH.ShipSpit(e,p,nm,nog,nt)
 			if po:IsValid() then
 				pv[i] = e:RealLocalToWorld(g:RealWorldToLocal(po:GetVelocity()+g:GetRealPos()))-e:GetRealPos()
 				if (p:GetPhysicsObjectCount() > 1) then
-					pp[i], pa[i] = WorldToLocal(po:GetPos(),po:GetAngle(),g:GetRealPos(),g:GetRealAngles())
+					pp[i], pa[i] = WorldToLocal(po:GetPos(),po:GetAngles(),g:GetRealPos(),g:GetRealAngles())
 					pp[i], pa[i] = LocalToWorld(pp[i], pa[i], e:GetPos(), e:GetAngles())
 				end
 			end
@@ -602,7 +602,7 @@ function GH.ShipSpit(e,p,nm,nog,nt)
 				local po = p:GetPhysicsObjectNum(i-1)
 				if (po:IsValid()) then
 					po:SetPos(pp[i])
-					po:SetAngle(pa[i])
+					po:SetAngles(pa[i])
 				end
 			end
 		end
@@ -710,7 +710,7 @@ function GH.PhysGhost(ent,p)
 				local gp = g:GetPhysicsObjectNum(i-1)
 				if (gp && po && gp:IsValid() && po:IsValid()) then
 					gp:SetPos(ent:RealLocalToWorld(mg:WorldToLocal(po:GetPos())))
-					gp:SetAngle(ent:RealLocalToWorldAngles(mg:WorldToLocalAngles(po:GetAngle())))
+					gp:SetAngles(ent:RealLocalToWorldAngles(mg:WorldToLocalAngles(po:GetAngles())))
 				end
 			end
 		end
@@ -762,7 +762,7 @@ function GH.PhysGhost(ent,p)
 				local gp = g:GetPhysicsObjectNum(i-1)
 				if (gp && po && gp:IsValid() && po:IsValid()) then
 					gp:SetPos(mg:RealLocalToWorld(ent:RealWorldToLocal(po:GetPos())))
-					gp:SetAngle(mg:RealLocalToWorldAngles(ent:RealWorldToLocalAngles(po:GetAngle())))
+					gp:SetAngles(mg:RealLocalToWorldAngles(ent:RealWorldToLocalAngles(po:GetAngles())))
 				end
 			end
 		end
