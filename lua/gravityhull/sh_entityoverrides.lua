@@ -39,8 +39,12 @@ end
 ------------------------------------------------------------------------------------------
 ENT.FireBullets = function(self,tbl)
 	if !GH.BulletGhost then
-		GH.BulletGhost = ents.Create("prop_physics")
-		GH.BulletGhost:SetModel("models/hunter/plates/plate.mdl")
+		if SERVER then
+			GH.BulletGhost = ents.Create("prop_physics")
+			GH.BulletGhost:SetModel("models/hunter/plates/plate.mdl")
+		else
+			GH.BulletGhost = ents.CreateClientProp("models/hunter/plates/plate.mdl")
+		end
 		GH.BulletGhost:SetColor(Color(0,0,0,1))
 		if SERVER then GH.BulletGhost:SetNoDraw(true) end
 		GH.BulletGhost:Spawn()
